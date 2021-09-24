@@ -14,6 +14,28 @@
     <th>Remove from My Gallery</th>
   </tr>
 
+  <!-- //** SO -->
+  <tr *ngFor="let item of myGalleryList">
+    <td> <img src="{{ item.primaryImage }}" style="width:auto;height:125px;"> </td>
+    <td> {{ item.artistDisplayName }}, {{item.title}} </td>
+    <p> {{ item.visitedObject }}</p>
+    <td></td><button (click)="onMarkAsVisited(item, item.entryId)">Mark as Visited</button>
+    <td><button (click)="deleteGalleryItem(item.entryId)">Remove From My Gallery</button>
+
+  </tr>
+
+</table>
+
+ <!-- <h1>My Gallery</h1>
+
+<table>
+  <tr>
+    <th>Object</th>
+    <th>Object Information</th>
+    <th>I've seen that!</th>
+    <th>Remove from My Gallery</th>
+  </tr>
+
   <tr *ngFor="let item of myGalleryList">
     <td> <img src="{{ item.primaryImage }}" style="width:auto;height:125px;"> </td>
     <td> {{ item.artistDisplayName }}, {{item.title}} </td>  
@@ -22,4 +44,4 @@
 
   </tr>
 
-</table>
+</table> -->
