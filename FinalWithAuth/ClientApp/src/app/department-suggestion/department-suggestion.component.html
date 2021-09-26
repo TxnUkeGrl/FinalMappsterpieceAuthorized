@@ -2,6 +2,7 @@
 
 <br />
 <br />
+
 <h2>Nice! There's some pretty neat stuff in your gallery. </h2>
 
 <br />
@@ -11,13 +12,16 @@
 
 <br />
 <br />
+<div [hidden]="!showDiv">
+  <h3> We recommend you check out {{ department }}</h3>
 
-<h3> {{ department }}</h3>
+  <br />
+  <br />
 
-<br />
+  <h4>Your Department Stats:</h4>
+  <ul>
+    <li *ngFor="let item of mapObj | keyvalue">
+      {{item.key}}: {{item.value}}</li>
+  </ul>
 
-<h4>Your Department Stats:</h4>
-<ul>
-  <li *ngFor="let item of mapObj | keyvalue">
-    {{item.key}}: {{item.value}}</li>
-</ul>
+</div>

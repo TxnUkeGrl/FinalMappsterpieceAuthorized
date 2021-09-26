@@ -17,6 +17,7 @@ export class DepartmentSuggestionComponent implements OnInit {
   mapObj = new Map ()
   department: string = '';
   departmentList : string[] = [];
+  showDiv = false;
 
   constructor(private galleryApiService: MyGalleryService) { }
 
@@ -37,7 +38,7 @@ export class DepartmentSuggestionComponent implements OnInit {
   // this method finds the most frequent value in the departments array using a map object
   mostFrequent(array: string[]) {
 
-    let map = this.mapObj; //a map object is like a dictionary - it's a set of key value pairs
+    var map = this.mapObj; //a map object is like a dictionary - it's a set of key value pairs
 
     let compare: number = 0;
     let mostFreq : string = '';
@@ -65,6 +66,7 @@ export class DepartmentSuggestionComponent implements OnInit {
 
     }
 
+
     this.department = mostFreq;
     return this.department;
 
@@ -74,8 +76,11 @@ export class DepartmentSuggestionComponent implements OnInit {
   // this is called when the get result button is clicked.
   // sets the department list to the array returned from makeNewList & sends that to mostFrequent to find the most popular dept.
   calculateDepartment () {
+    this.mapObj.clear();
     this.departmentList = this.makeNewList(this.myGalleryList)
     this.mostFrequent(this.departmentList)
+    this.showDiv = !this.showDiv;
+
   }
 
   //endpoint

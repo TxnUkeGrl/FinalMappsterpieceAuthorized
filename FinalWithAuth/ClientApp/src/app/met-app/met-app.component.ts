@@ -19,6 +19,7 @@ export class MetAppComponent implements OnInit {
   randomValue: number;
   currentIndex: number = 0;
 
+
   constructor(private metAPIservice: MetAPIService, private myGalleryAPIservice: MyGalleryService) { }
 
     // On start, the app shows a pre-selected object. Can work out a better system later.
@@ -88,6 +89,7 @@ export class MetAppComponent implements OnInit {
     onSelect(){
       var rand = this.getNextValue(this.listBySearchTerm.objectIDs);
       this.getMetObjById(rand);
+
     }
 
     //same as onSelect, but when the user selects "like"

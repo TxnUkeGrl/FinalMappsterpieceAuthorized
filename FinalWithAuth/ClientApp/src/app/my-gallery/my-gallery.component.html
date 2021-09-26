@@ -5,10 +5,10 @@
  -->
 
 
- <h1>My Gallery</h1>
+<h1>My Gallery</h1>
 
 <!-- Display Gallery -->
- <table class="styled-table">
+<table class="styled-table">
   <col style="width:30%">
 	<col style="width:35%">
 	<col style="width:20%">
@@ -26,7 +26,6 @@
     <td> {{item.title}} </td>
     <td><button class="btn-select" (click)="onMarkAsVisited(item, item.entryId)">Mark as Visited</button>
     <td><button class="btn-select" (click)="deleteGalleryItem(item.entryId)">Remove From My Gallery</button>
-
   </tr>
 
 </table>
