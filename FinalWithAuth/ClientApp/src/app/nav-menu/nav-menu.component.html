@@ -27,7 +27,14 @@
             [routerLinkActive]="['link-active']"
             [routerLinkActiveOptions]="{ exact: true }"
           >
-            <a class="nav-link text-dark" [routerLink]="['/']">Home</a>
+            <a class="nav-link text-dark" [routerLink]="['/']"
+            >Home</a
+              >
+          </li>
+          <li class="nav-item" [routerLinkActive]="['link-active']">
+            <a class="nav-link text-dark" [routerLink]="['/metapp']"
+              >Mappsterpiece App</a
+              >
           </li>
           <li class="nav-item" [routerLinkActive]="['link-active']">
             <a class="nav-link text-dark" [routerLink]="['/mygallery']"
@@ -38,11 +45,6 @@
             <a class="nav-link text-dark" [routerLink]="['/mysuggestion']"
               >My Suggestion</a
             >
-          </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['/fetch-data']"
-              >Fetch data</a
-              >          
           </li>
         </ul>
       </div>

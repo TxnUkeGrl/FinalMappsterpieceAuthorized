@@ -1,21 +1,29 @@
+<br />
+<br />
+
+<h4>To get started, select the type of artwork you want to see today: </h4>
+
+<br />
+<br />
+
 <!-- dropdown for search term - sends the selection value to submitSearchTerm method -->
 <select (change)="submitSearchTerm($event)">
   <option value="default">-----</option>
   <option *ngFor="let item of searchTermArray" [value]="item">{{ item }}</option>
 </select>
 
-<!-- select button  -->
+<!-- select medium button  -->
 <!-- <button (click)="onSelect()">select</button> -->
-<button (click)="onSelect()">select</button>
+<button (click)="onSelect()">Select</button>
 
 <br />
 <br />
 <br />
 
 <!-- object information display -->
-<img src="{{ metObj.primaryImage }}" style="width:400px;height:auto;">
+ <img src="{{ metObj.primaryImage }}" style="width:400px;height:auto;">
 
-<div *ngIf="!metObj.artistDisplayName" >
+ <div *ngIf="!metObj.artistDisplayName" >
   <div>
     <b>{{ metObj.artistDisplayName }},</b> {{ metObj.artistNationality}}, {{metObj.artistBeginDate}}-{{metObj.artistEndDate}}
   </div>
