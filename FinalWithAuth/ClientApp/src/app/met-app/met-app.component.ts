@@ -122,40 +122,4 @@ export class MetAppComponent implements OnInit {
       error => console.log(error)
     )
    }
-
-   //methods below = old code.
-
-   //this method returns a random number from a number array. It gets a random index from the array
-   //then assigns the value at that index to property randomValue.
-   //improvement needed: make sure the random number doesn't repeat
-   //  getRandomValue(array: number[]) :number {
-   //     console.log("beginning of getObjListBySearchterm getRandomValue")
-   //     var randIndex = Math.floor(Math.random() * array.length)
-   //      console.log(randIndex);
-   //     this.randomValue = array[randIndex];
-   //      console.log(this.randomValue);
-   //     return this.randomValue;
-   //   }
-
-   // //Refers to the Select button, which is clicked after a search term is selected.
-   //  //This sets a local variable rand equal to the random value that is returned from getRandomValue
-   //  //then sends rand to getMetObjById to display the metObject
-   //  onSelect() {
-   //   var rand = this.getNextValue(this.listBySearchTerm.objectIDs);
-   //   this.getMetObjById(rand);
-   // }
-
-   // //same as onSelect, but when the user selects "like"
-   // //***Required functionality: add the metObject to the MyGallery using the addNewLike function****
-   // onLike() {
-   //   var rand = this.getRandomValue(this.listBySearchTerm.objectIDs);
-   //   this.getMetObjById(rand);
-   // }
-
-   // //same as onSelect, but when the user selects "dislike"
-   // //nothing else happens per MVP goals
-   // onDislike() {
-   //   var testvalue = this.getRandomValue(this.listBySearchTerm.objectIDs);
-   //   this.getMetObjById(testvalue);
-   // }
   }
