@@ -15,55 +15,58 @@ export class MetAppComponent implements OnInit {
   listBySearchTerm: ListBySearchTerm;
   userSearchSelection: string = '';
   searchArray: number [] = [];
-  searchTermArray: string[] = [
-       "Paintings", "Ceramics", "Sculpture",
-       "Furniture"
-     ];
+  searchTermArray: string[] = [ "Paintings", "Ceramics", "Sculpture", "Furniture" ];
   randomValue: number;
   currentIndex: number = 0;
 
+
   constructor(private metAPIservice: MetAPIService, private myGalleryAPIservice: MyGalleryService) { }
 
-    // On start, the app shows this pre-selected object. Can work out a better system later.
+    // On start, the app shows a pre-selected object. Can work out a better system later.
     ngOnInit() {
       console.log("made it to the app component")
-      this.getMetObjById(436529);
+      //this.getMetObjById(436529);
+      this.getMetObjById(11319);
    }
 
     //when the user selects a searchterm from the drop down, this method assigns the value to property userSearchSelection
     //then, that value is sent as a parameter to getObjListBySearchTerm, which assigns values to a property called listBySearchTerm
     submitSearchTerm(e: any) {
       this.userSearchSelection = e.target.value;
-        console.log(this.userSearchSelection);
+        console.log(`userSearchSelection`);
+        console.log(this.userSearchSelection)
       this.getObjListBySearchTerm(this.userSearchSelection); //assigns ListBySearchTerm values (a list of objects that meet that searchterm)
         console.log("end of submitSearchTerm method")
     }
 
-    //accesses the 3rd party API to assign the values the listBySearchTerm object
+    //accesses the 3rd party API to assign value to listBySearchTerm object
+    //returns a shuffled list of object IDs that match the search
     getObjListBySearchTerm(searchTerm: string) {
         console.log("beginning of getObjListBySearchterm")
         console.log(`term: ${searchTerm}`);
       this.metAPIservice.getObjectListBySearchTerm(searchTerm).subscribe(
          result => {
-           this.listBySearchTerm = result;
-            console.log(this.listBySearchTerm.objectIDs)
+           this.listBySearchTerm = result; //assigning value
+              console.log(`listBySearchTerm ObjectIds`)
+              console.log(this.listBySearchTerm.objectIDs)
            this.shuffle(this.listBySearchTerm.objectIDs); //shuffling the array randomly
-            console.log(this.listBySearchTerm.objectIDs);
+              console.log(`shuffled listBySearchTerm ObjectIds`);
+              console.log(this.listBySearchTerm.objectIDs)
          },
 
          error => console.log(error)
       )};
 
-    //shuffles the array randomly (fischer-yates method)
+    //shuffles the array randomly (fischer-yates method) & returns the shuffled array of numbers
     //purpose: so the user doesn't go through the same set of images each time they view the app
     shuffle(numbers: number[]): number[] {
-      var m = numbers.length;
+      var m = numbers.length; //the length of the array
 
       while (m) {
-        var i = Math.floor(Math.random() * m--);
-        var t = numbers[m];
-        numbers[m] = numbers[i];
-        numbers[i] = t;
+        var i = Math.floor(Math.random() * m--); //var i = random index
+        var t = numbers[m]; // t = the value of the random index
+        numbers[m] = numbers[i]; // the number at the end of the array = the current index
+        numbers[i] = t; //the current index = random index
       }
 
       return numbers;
@@ -86,14 +89,15 @@ export class MetAppComponent implements OnInit {
     onSelect(){
       var rand = this.getNextValue(this.listBySearchTerm.objectIDs);
       this.getMetObjById(rand);
+
     }
 
     //same as onSelect, but when the user selects "like"
-    //***Required functionality: add the metObject to the MyGallery using the addNewLike function****
+    //add the met Obj to the myGallery list
     onLike() {
       var rand = this.getNextValue(this.listBySearchTerm.objectIDs);
       this.getMetObjById(rand);
-      this.addNewLike(this.metObj);
+      this.addNewLike(this.metObj); //addNewLike
     }
 
     //same as onSelect, but when the user selects "dislike"
@@ -108,7 +112,8 @@ export class MetAppComponent implements OnInit {
      this.metAPIservice.getObjectById(objectId).subscribe(
        result => {
          this.metObj = result;
-         console.log(this.metObj);
+         console.log(`getMetObjById`);
+         console.log(this.metObj)
        },
        error => console.log(error)
       )};
@@ -117,9 +122,15 @@ export class MetAppComponent implements OnInit {
    addNewLike(metObj: MetObjects) {
     this.myGalleryAPIservice.addToMyGallery(metObj).subscribe(
       result => {
-        console.log(result);
+        console.log(`addNewLike`);
+        console.log(result)
       },
       error => console.log(error)
     )
+<<<<<<< HEAD
    }
+=======
+>>>>>>> 83fbf21159893cd32f0222d3204e9593b47c3b13
   }
+
+}

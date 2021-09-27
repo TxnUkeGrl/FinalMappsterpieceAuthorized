@@ -1,5 +1,27 @@
 <h1>My Suggestion</h1>
 
-<!-- <p>we analyzed you data using a top-secret algorithm and we think you should visit {{ deparmentSuggestion }}</p> -->
+<br />
+<br />
 
-<p>we analyzed your data using a top-secret algorithm and we think you should visit ... </p>
+<h2>Nice! There's some pretty neat stuff in your gallery. </h2>
+
+<br />
+<br />
+
+<button class="btn-select" (click)="calculateDepartment()">Click here to find out which department you should visit</button>
+
+<br />
+<br />
+<div [hidden]="!showDiv">
+  <h3> We recommend you check out {{ department }}</h3>
+
+  <br />
+  <br />
+
+  <h4>Your Department Stats:</h4>
+  <ul>
+    <li *ngFor="let item of mapObj | keyvalue">
+      {{item.key}}: {{item.value}}</li>
+  </ul>
+
+</div>

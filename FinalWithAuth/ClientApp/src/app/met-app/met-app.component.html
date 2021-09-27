@@ -1,37 +1,46 @@
-<!-- dropdown for search term - sends the selection value to submitSearchTerm method -->
-<select (change)="submitSearchTerm($event)">
-  <option value="default">-----</option>
-  <option *ngFor="let item of searchTermArray" [value]="item">{{ item }}</option>
-</select>
 
-<!-- select button  -->
-<!-- <button (click)="onSelect()">select</button> -->
-<button (click)="onSelect()">select</button>
+<div class="page">
 
-<br />
-<br />
-<br />
+  <h1>Hello!</h1>
+  <h4>To get started, select the type of artwork you want to see today: </h4>
 
-<!-- object information display -->
-<img src="{{ metObj.primaryImage }}" style="width:400px;height:auto;">
+  <br />
+  <br />
 
-<div *ngIf="!metObj.artistDisplayName" >
+  <!-- dropdown for search term - sends the selection value to submitSearchTerm method -->
+  <select (change)="submitSearchTerm($event)">
+    <option value="default">-----</option>
+    <option *ngFor="let item of searchTermArray" [value]="item">{{ item }}</option>
+  </select>
+
+  <!-- select medium button  -->
+  <!-- <button (click)="onSelect()">select</button> -->
+  <button class="btn-select" (click)="onSelect()">Select</button>
+
+  <br />
+  <br />
+  <br />
+
   <div>
-    <b>{{ metObj.artistDisplayName }},</b> {{ metObj.artistNationality}}, {{metObj.artistBeginDate}}-{{metObj.artistEndDate}}
+  <!-- object information display -->
+    <img src="{{ metObj.primaryImage }}" style="width:400px;height:auto;">
+
+    <div *ngIf="!metObj.artistDisplayName" >
+      <div>
+        <b>{{ metObj.artistDisplayName }},</b> {{ metObj.artistNationality}}, {{metObj.artistBeginDate}}-{{metObj.artistEndDate}}
+      </div>
+    </div>
+    <br />
+    <div>
+      <b>{{ metObj.title }}</b>, {{metObj.objectDate }} <br />
+        {{metObj.medium}}
+    </div>
+    <br />
+
+    <!-- like/dislike buttons -->
+    <button class="btn-choose" (click)="onLike()">oOoOo</button>
+    <button class="btn-choose" (click)="onDislike()">Not for me</button>
+
+
   </div>
 </div>
-<br />
-<div>
-  <b>{{ metObj.title }}</b>, {{metObj.objectDate }} <br />
-  {{metObj.medium}}
-</div>
-<br />
-
-<!-- like/dislike buttons -->
-<button (click)="onLike()">oOoOo</button>
-<button (click)="onDislike()">Not for me</button>
-
-<br />
-<br />
-<br />
-<br />

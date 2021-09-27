@@ -10,10 +10,10 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 })
 export class MyGalleryComponent implements OnInit {
 
-  /*Component purpose:
-  1) display list of the user's favorite objects --- funtion to display list
-  2) allow them to edit the haveVisited bool property --- function to edit, button to edit
-  3) allow them to delete the entry --- function to delete, button to delete
+  /* Component purpose:
+  1) display list of the user's favorite objects
+  2) allow them to edit the haveVisited bool property
+  3) allow them to delete the entry
   */
 
    myGalleryList: MyGallery[] = [];
@@ -26,7 +26,8 @@ export class MyGalleryComponent implements OnInit {
      this.getAllLikes();
    }
 
-   //get list of likes by user
+
+   //access getAllLikes endpoint & assign data to property myGalleryList
    getAllLikes () {
      this.galleryApiService.getAllLikes().subscribe(
        result => {
@@ -37,7 +38,7 @@ export class MyGalleryComponent implements OnInit {
      )
    }
 
-   // //delete an item from their list of likes -- called when the user clicks "delete from my gallery"
+   // delete an item from the -- called when the user clicks "delete from my gallery"
     deleteGalleryItem(entryId: number): void {
       this.galleryApiService.deleteGalleryItem(entryId).subscribe(
         result => {
@@ -48,7 +49,7 @@ export class MyGalleryComponent implements OnInit {
       )
     }
 
-    //** SO/AC updated
+    //** NOT FINISHED - HELP NEEDED
     //edit an item from the list of likes
    editGalleryItem (entryId: number, galleryObj: MyGallery) {
     this.galleryApiService.updateGalleryItem(entryId, galleryObj).subscribe(
@@ -61,8 +62,16 @@ export class MyGalleryComponent implements OnInit {
     )
   }
 
-  //** SO/AC updated
+
+  //** NOT FINISHED - HELP NEEDED
    // when the user clicks the "I've visited button"
    onMarkAsVisited (item: MyGallery, entryId: number) {
    }
+<<<<<<< HEAD
 }
+=======
+
+}
+
+
+>>>>>>> 83fbf21159893cd32f0222d3204e9593b47c3b13
