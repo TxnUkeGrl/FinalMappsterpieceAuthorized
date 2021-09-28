@@ -18,7 +18,7 @@ export class MyGalleryComponent implements OnInit {
   3) allow them to delete the entry
   */
 
-   myGalleryList: MyGallery[] = [];
+  myGalleryList: MyGallery[] = [];
   galleryObject: MyGallery; //** SO
   visitedObject: boolean;
   entryId: number;
@@ -35,6 +35,7 @@ export class MyGalleryComponent implements OnInit {
      this.galleryApiService.getAllLikes().subscribe(
        result => {
          this.myGalleryList = result;
+         result.reverse(); //reversing the list so the most recent add displays
          console.log(this.myGalleryList)
        },
        error => console.log(error)
@@ -52,12 +53,12 @@ export class MyGalleryComponent implements OnInit {
       )
     }
 
-    //** NOT FINISHED - HELP NEEDED
+    //** NOT FINISHED - HELP NEEDED // 9/28 changed result to a gallery object
     //edit an item from the list of likes
    editGalleryItem (entryId: number, galleryObj: MyGallery) {
     this.galleryApiService.updateGalleryItem(entryId, galleryObj).subscribe(
       result => {
-        this.myGalleryList = result;
+        this.galleryObject = result;
         console.log(this.myGalleryList)
         this.getAllLikes();
       },

@@ -10,8 +10,8 @@ import { Observable } from 'rxjs';
 
 export class MyGalleryService {
 
-   //apiUri: string ="https://localhost:44375/api/likes"; //base URL needed
-  apiUri: string ="https://finalwithauth20210927210616.azurewebsites.net/"; //base URL needed
+   apiUri: string ="https://localhost:44375/api/likes"; //base URL needed
+  //apiUri: string ="https://finalwithauth20210927210616.azurewebsites.net/"; //base URL needed
 
    constructor(private http: HttpClient) { }
 
@@ -24,9 +24,7 @@ export class MyGalleryService {
     return this.http.get<MyGallery>(`${this.apiUri}/getlike/${entryId}`);
   }
 
-    getObjectById (entryId: number) {
-      return this.http.get<MyGallery>(`${this.apiUri}/getlike/${entryId}`);
-    }
+    //deleted a second instance of the getObjectById method.
 
 
      // CREATE add an object to myGallery

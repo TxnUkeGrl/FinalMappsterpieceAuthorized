@@ -10,10 +10,10 @@
 .btn-select:hover {
   background-color: rgb(236, 46, 55);
   color: white;
-  }
+}
 
 
-  .styled-table {
+.styled-table {
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 18px;
