@@ -18,7 +18,7 @@ export class MyGalleryComponent implements OnInit {
   3) allow them to delete the entry
   */
 
-   myGalleryList: MyGallery[] = [];
+  myGalleryList: MyGallery[] = [];
   galleryObject: MyGallery; //** SO
   visitedObject: boolean;
   entryId: number;
@@ -76,12 +76,10 @@ export class MyGalleryComponent implements OnInit {
     )
   }
 
-  onMarkAsVisited(entryId: number, item: MyGallery) {
-
-    this.galleryObject = item;
-    this.galleryObject.visitedObject = true;
-    this.entryId = entryId;
-
-    this.editGalleryItem();
+  onMarkAsVisited(entryId: number) {
+    this.galleryApiService.updateVisitedStatus(entryId).subscribe(
+      result => { this.getAllLikes(); },
+      error => console.log(error)
+    )    
   }
 }

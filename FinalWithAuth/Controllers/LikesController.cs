@@ -109,10 +109,15 @@ namespace FinalWithAuth.Controllers
             return Ok(newLike);
         }
 
-        //[HttpPut("VisitedObject")]
-        //public async Task<ActionResult<TheLikes>> OnMarkAsVisited(MetObject.Rootobject mObj)
-        //{
+        [HttpPut("VisitedObject/{entryId}")]
+        public async Task<ActionResult> OnMarkAsVisited([FromRoute] int entryId)
+        {
+            var seenId = _context.TheLikes.Find(entryId);
 
-        //}
+            seenId.VisitedObject = !seenId.VisitedObject;
+
+            await _context.SaveChangesAsync();
+            return Ok();
+        }
     }
 }
