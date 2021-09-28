@@ -1,7 +1,9 @@
+import { MetObjects } from './../models/MetObjects';
 import { MyGallery } from './../models/MyGallery';
 import { MyGalleryService } from '../services/my-gallery.service';
 import { Component, OnInit } from '@angular/core';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { createFalse, createTrue } from 'typescript';
 
 @Component({
   selector: 'app-my-gallery',
@@ -17,7 +19,9 @@ export class MyGalleryComponent implements OnInit {
   */
 
    myGalleryList: MyGallery[] = [];
-   galleryObject: MyGallery; //** SO
+  galleryObject: MyGallery; //** SO
+  visitedObject: boolean;
+  entryId: number;
 
    constructor(private galleryApiService: MyGalleryService) { }
 
@@ -35,7 +39,17 @@ export class MyGalleryComponent implements OnInit {
        },
        error => console.log(error)
      )
-   }
+  }
+
+  getLikeById(entryId: number) {
+    this.galleryApiService.getObjectById(entryId).subscribe(
+      result => {
+        this.galleryObject = result;
+        console.log(this.galleryObject)
+      },
+      error => console.log(error)
+    )
+  }
 
    // delete an item from the -- called when the user clicks "delete from my gallery"
     deleteGalleryItem(entryId: number): void {
@@ -48,21 +62,26 @@ export class MyGalleryComponent implements OnInit {
       )
     }
 
-    //** NOT FINISHED - HELP NEEDED
-    //edit an item from the list of likes
-   editGalleryItem (entryId: number, galleryObj: MyGallery) {
-    this.galleryApiService.updateGalleryItem(entryId, galleryObj).subscribe(
+  //** NOT FINISHED - HELP NEEDED
+  //edit an item from the list of likes
+  editGalleryItem() {
+    this.galleryApiService.updateGalleryItem(this.entryId, this.galleryObject).subscribe(
       result => {
-        this.myGalleryList = result;
-        console.log(this.myGalleryList)
-        this.getAllLikes();
+        //galleryObj.visitedObject = this.visitedObject;
+        //this.myGalleryList = result;
+        console.log(this.galleryObject)
+        //this.getAllLikes();
       },
       error => console.log(error)
     )
   }
 
-  //** NOT FINISHED - HELP NEEDED
-   // when the user clicks the "I've visited button"
-   onMarkAsVisited (item: MyGallery, entryId: number) {
-   }
+  onMarkAsVisited(entryId: number, item: MyGallery) {
+
+    this.galleryObject = item;
+    this.galleryObject.visitedObject = true;
+    this.entryId = entryId;
+
+    this.editGalleryItem();
+  }
 }

@@ -75,6 +75,20 @@ namespace FinalWithAuth.Controllers
             return likes;
         }
 
+        [HttpGet("getlike/{entryid}")]
+        public async Task<ActionResult<TheLikes>> GetLike(int entryId)
+        {
+            var like = await _context.TheLikes.FindAsync(entryId);
+            if (like == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return like;
+            }
+        }
+
         [HttpPost("NewLike")]
         public async Task<ActionResult<TheLikes>> AddLike(MetObject.Rootobject mObj)
         {
