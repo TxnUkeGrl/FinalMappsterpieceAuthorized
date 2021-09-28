@@ -1,27 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-//@Component({
-//   selector: 'app-fetch-data',
-//   templateUrl: './fetch-data.component.html'
-// })
-// export class FetchDataComponent {
-//   public forecasts: WeatherForecast[];
-
-//   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-//     http.get<WeatherForecast[]>(baseUrl + 'weatherforecast').subscribe(result => {
-//       this.forecasts = result;
-//     }, error => console.error(error));
-//   }
-// }
-
-// interface WeatherForecast {
-//   date: string;
-//   temperatureC: number;
-//   temperatureF: number;
-//   summary: string;
-// }
-
 import { MyGalleryService } from '../services/my-gallery.service';
 //import { Component, OnInit } from '@angular/core';
 import { MyGallery } from '../models/MyGallery';
@@ -59,23 +38,13 @@ export class FetchDataComponent { //implements OnInit
      )
    }
 
-  // // //delete an item from their list of likes -- called when the user clicks "delete from my gallery"
-  //  deletegalleryitem (id: number): void {
-  //    this.galleryApiservice.deletegalleryitem(id).subscribe(
-  //      result => {
-  //        this.myGalleryList();
-  //        console.log(id);
-  //      },
-  //      error => console.log(error)
-  //    )
-  //  }
-
    //edit an item from the list of likes
    editGalleryItem () {
   }
 
    // when the user clicks the "I've visited button"
    onMarkAsVisited (){
+
      //change the bool to true & send that update to the API (editGalleryItem)
    }
 }

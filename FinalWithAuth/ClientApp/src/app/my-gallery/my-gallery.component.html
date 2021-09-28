@@ -4,14 +4,13 @@
   3) display a button to delete
  -->
 
-
 <h1>My Gallery</h1>
 
 <!-- Display Gallery -->
 <table class="styled-table">
   <col style="width:30%">
-	<col style="width:35%">
-	<col style="width:20%">
+  <col style="width:35%">
+  <col style="width:20%">
   <col style="width:15%">
   <tr>
     <!-- <th>Object</th>
@@ -19,7 +18,6 @@
     <th>Update</th>
     <th>Delete</th> -->
   </tr>
-
 
   <tr *ngFor="let item of myGalleryList">
     <td> <img src="{{ item.primaryImage }}" style="width:auto;height:150px;"> </td>
