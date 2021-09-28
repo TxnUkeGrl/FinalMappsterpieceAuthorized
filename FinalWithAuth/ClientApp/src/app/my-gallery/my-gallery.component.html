@@ -23,8 +23,8 @@
 
   <tr *ngFor="let item of myGalleryList">
     <td> <img src="{{ item.primaryImage }}" style="width:auto;height:150px;"> </td>
-    <td> {{item.title}} </td>
-    <td><button class="btn-select" (click)="onMarkAsVisited(item, item.entryId)">Mark as Visited</button>
+    <td> {{item.visitedObject}} </td>
+    <td><button class="btn-select" (click)="onMarkAsVisited(item.entryId, item)">Mark as Visited</button>
     <td><button class="btn-select" (click)="deleteGalleryItem(item.entryId)">Remove From My Gallery</button>
   </tr>
 

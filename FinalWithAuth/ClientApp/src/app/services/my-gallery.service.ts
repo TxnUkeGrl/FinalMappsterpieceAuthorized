@@ -19,6 +19,11 @@ export class MyGalleryService {
      return this.http.get<MyGallery[]>(`${this.apiUri}/getlikes`);
     }
 
+    getObjectById (entryId: number) {
+      return this.http.get<MyGallery>(`${this.apiUri}/getlike/${entryId}`);
+    }
+
+
      // CREATE add an object to myGallery
     addToMyGallery (metObj: MetObjects) {
       return this.http.post<MyGallery>(`${this.apiUri}/newlike`, {"objectId":metObj.objectID, "department":metObj.department, "title":metObj.title,
@@ -29,16 +34,16 @@ export class MyGalleryService {
     //** SO/AC
     // UPDATE edit an object that the user likes (Have visited boolean)
     updateGalleryItem (entryId: number, galleryItem: MyGallery) {
-      return this.http.put<MyGallery[]>(`${this.apiUri}/updatelike/${entryId}`, {"objectId":galleryItem.objectId, "department":galleryItem.department, "title":galleryItem.title,
-      "artistDisplayName":galleryItem.artistDisplayName, "primaryImage":galleryItem.primaryImage, "artistDisplayBio":galleryItem.artistDisplayBio,
-      "medium":galleryItem.medium, "objectDate":galleryItem.objectDate, "visitedObject":galleryItem.visitedObject});
+      return this.http.put<MyGallery>(`${this.apiUri}/updatelike/${entryId}`, {"objectId":galleryItem.objectId, "department":galleryItem.department, "title":galleryItem.title,
+      "visitedObject":galleryItem.visitedObject,"artistDisplayName":galleryItem.artistDisplayName, "primaryImage":galleryItem.primaryImage, "artistDisplayBio":galleryItem.artistDisplayBio,
+      "medium":galleryItem.medium, "objectDate":galleryItem.objectDate });
     }
 
     // DELETE delete an item from the list of user likes
     deleteGalleryItem (entryId: number) {
       return this.http.delete(`${this.apiUri}/delete/${entryId}`);
     }
-  //}
+
 }
 
 // import { MetObjects } from './../models/MetObjects';

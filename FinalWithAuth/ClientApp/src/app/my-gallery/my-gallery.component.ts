@@ -1,7 +1,9 @@
+import { MetObjects } from './../models/MetObjects';
 import { MyGallery } from './../models/MyGallery';
 import { MyGalleryService } from '../services/my-gallery.service';
 import { Component, OnInit } from '@angular/core';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { createFalse, createTrue } from 'typescript';
 
 @Component({
   selector: 'app-my-gallery',
@@ -18,6 +20,8 @@ export class MyGalleryComponent implements OnInit {
 
    myGalleryList: MyGallery[] = [];
    galleryObject: MyGallery; //** SO
+   visitedObject: boolean;
+   entryId: number;
 
    constructor(private galleryApiService: MyGalleryService) { }
 
@@ -38,6 +42,17 @@ export class MyGalleryComponent implements OnInit {
      )
    }
 
+   getLikeById (entryId: number) {
+     this.galleryApiService.getObjectById(entryId).subscribe(
+       result => {
+         this.galleryObject = result;
+         console.log(this.galleryObject)
+       },
+       error => console.log(error)
+     )
+   }
+
+
    // delete an item from the -- called when the user clicks "delete from my gallery"
     deleteGalleryItem(entryId: number): void {
       this.galleryApiService.deleteGalleryItem(entryId).subscribe(
@@ -49,24 +64,59 @@ export class MyGalleryComponent implements OnInit {
       )
     }
 
+
     //** NOT FINISHED - HELP NEEDED
     //edit an item from the list of likes
-   editGalleryItem (entryId: number, galleryObj: MyGallery) {
-    this.galleryApiService.updateGalleryItem(entryId, galleryObj).subscribe(
-      result => {
-        this.myGalleryList = result;
-        console.log(this.myGalleryList)
-        this.getAllLikes();
-      },
-      error => console.log(error)
-    )
-  }
+    editGalleryItem () {
+      this.galleryApiService.updateGalleryItem(this.entryId, this.galleryObject).subscribe(
+        result => {
+          //galleryObj.visitedObject = this.visitedObject;
+          //this.myGalleryList = result;
+          console.log(this.galleryObject)
+          //this.getAllLikes();
+        },
+        error => console.log(error)
+      )
 
+   }
+
+   onMarkAsVisited(entryId: number, item: MyGallery) {
+
+    this.galleryObject = item;
+    this.galleryObject.visitedObject = true;
+    this.entryId = entryId;
+
+    this.editGalleryItem();
+
+   }
 
   //** NOT FINISHED - HELP NEEDED
    // when the user clicks the "I've visited button"
-   onMarkAsVisited (item: MyGallery, entryId: number) {
-   }
+  //  onMarkAsVisited(entryId: number, item: MyGallery) {
+  //   //change the bool the object
+
+  //   if (item.visitedObject == true ) {
+  //      item.visitedObject = false;
+  //    } else {
+  //      item.visitedObject = true;
+  //    }
+
+
+  //   this.editGalleryItem(entryId, item)
+
+  //   }
+
+  // onMarkAsVisited(entryId: number) {
+  //   this.galleryApiService.getObjectById(entryId).subscribe(result => {
+  //     this.galleryObject = result;
+  //     this.galleryObject.visitedObject = true;
+  //     this.galleryApiService.updateGalleryItem(entryId, this.galleryObject).subscribe(data => {
+  //       this.getAllLikes();
+  //     })
+  //   })
+  // }
+
+
 
 }
 

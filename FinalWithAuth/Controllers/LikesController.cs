@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FinalWithAuth.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
 
@@ -32,6 +32,15 @@ namespace FinalWithAuth.Controllers
             else
             {
                 TheLikes dbLike = _context.TheLikes.Find(entryId);
+
+                //if (like.VisitedObject == true)
+                //{
+                //    like.VisitedObject = false;
+                //}
+                //else
+                //{
+                //    like.VisitedObject = true;
+                //}
 
                 dbLike.ObjectId = like.ObjectId;
                 dbLike.Department = like.Department;
@@ -67,12 +76,27 @@ namespace FinalWithAuth.Controllers
             }
         }
 
-        ////api/met/likes/{user}
+        ////api/met/likes
         [HttpGet("getLikes")]
         public async Task<ActionResult<List<TheLikes>>> GetAllLikes()
         {
             var likes = await _context.TheLikes.ToListAsync();
             return likes;
+        }
+
+        [HttpGet("getlike/{entryid}")]
+        public async Task<ActionResult<TheLikes>> GetLike(int entryId)
+        {
+            var like = await _context.TheLikes.FindAsync(entryId);
+            if (like == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return like;
+            }
+
         }
 
         [HttpPost("NewLike")]
