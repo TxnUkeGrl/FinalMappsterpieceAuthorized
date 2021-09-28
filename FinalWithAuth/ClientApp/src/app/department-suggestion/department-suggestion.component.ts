@@ -63,18 +63,11 @@ export class DepartmentSuggestionComponent implements OnInit {
         compare = map.get(word); // set compare to the tally
         mostFreq = array[i]; // the property mostFreq = the item at that index (department name)
        }
-
     }
-
 
     this.department = mostFreq;
     return this.department;
-
   }
-<<<<<<< HEAD
-}
-=======
-
 
   // this is called when the get result button is clicked.
   // sets the department list to the array returned from makeNewList & sends that to mostFrequent to find the most popular dept.
@@ -83,7 +76,6 @@ export class DepartmentSuggestionComponent implements OnInit {
     this.departmentList = this.makeNewList(this.myGalleryList)
     this.mostFrequent(this.departmentList)
     this.showDiv = !this.showDiv;
-
   }
 
   //endpoint
@@ -97,6 +89,4 @@ export class DepartmentSuggestionComponent implements OnInit {
       error => console.log(error)
     )
   }
-
 }
->>>>>>> 83fbf21159893cd32f0222d3204e9593b47c3b13

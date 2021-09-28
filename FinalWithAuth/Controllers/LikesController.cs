@@ -95,20 +95,10 @@ namespace FinalWithAuth.Controllers
             return Ok(newLike);
         }
 
-        //[HttpDelete("{ObjectId}")]
-        //public async Task<ActionResult> DeleteLikes(int EntryId)
+        //[HttpPut("VisitedObject")]
+        //public async Task<ActionResult<TheLikes>> OnMarkAsVisited(MetObject.Rootobject mObj)
         //{
-        //    TheLikes theLike = _context.TheLikes.Where(x => x.EntryId == EntryId).FirstOrDefault();
 
-        //    if (theLike is object)
-        //    {
-        //        _context.TheLikes.Remove(theLike);
-
-        //        await _context.SaveChangesAsync();
-        //        return NoContent();
-        //    }
-
-        //    return NotFound();
         //}
     }
 }

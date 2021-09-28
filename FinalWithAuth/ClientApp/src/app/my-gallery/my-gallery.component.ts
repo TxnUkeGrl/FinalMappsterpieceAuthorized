@@ -26,7 +26,6 @@ export class MyGalleryComponent implements OnInit {
      this.getAllLikes();
    }
 
-
    //access getAllLikes endpoint & assign data to property myGalleryList
    getAllLikes () {
      this.galleryApiService.getAllLikes().subscribe(
@@ -62,16 +61,8 @@ export class MyGalleryComponent implements OnInit {
     )
   }
 
-
   //** NOT FINISHED - HELP NEEDED
    // when the user clicks the "I've visited button"
    onMarkAsVisited (item: MyGallery, entryId: number) {
    }
-<<<<<<< HEAD
 }
-=======
-
-}
-
-
->>>>>>> 83fbf21159893cd32f0222d3204e9593b47c3b13

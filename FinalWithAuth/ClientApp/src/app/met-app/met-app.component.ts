@@ -127,10 +127,5 @@ export class MetAppComponent implements OnInit {
       },
       error => console.log(error)
     )
-<<<<<<< HEAD
    }
-=======
->>>>>>> 83fbf21159893cd32f0222d3204e9593b47c3b13
   }
-
-}
