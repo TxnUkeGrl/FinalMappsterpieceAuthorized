@@ -1,9 +1,14 @@
-
+/* 
 .page {
   display: block;
     margin-left: auto;
-    margin-right: auto
-}
+    margin-right: auto;
+    border-collapse: collapse;
+    margin: 25px 0;
+     margin-left: 50px;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+} */
 
 .btn-choose {
   border: 2px solid black;
@@ -11,36 +16,30 @@
   color: black;
   padding: 10px;
   font-size: 20px;
-
-
   text-align: center;
   position: relative;
   margin-bottom: 20px;
   margin-right: 20px;
-
 }
 
-.btn-choose:hover {
-  background-color: rgb(236, 46, 55);
-  color: white
+  .btn-choose:hover {
+    background-color: rgb(236, 46, 55);
+    color: white
   }
 
 .btn-select {
-    border: 2px solid black;
-    background-color: white;
-    color: black;
-    padding: 5px;
-    font-size: 16px;
+  border: 2px solid black;
+  background-color: white;
+  color: black;
+  padding: 5px;
+  font-size: 16px;
+  text-align: center;
+  position: relative;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
 
-
-    text-align: center;
-    position: relative;
-    margin-bottom: 20px;
-    margin-left: 20px;
-
- }
-
-.btn-select:hover {
+  .btn-select:hover {
     background-color: rgb(236, 46, 55);
     color: white
-}
+  }

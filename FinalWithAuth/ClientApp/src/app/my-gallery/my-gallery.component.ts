@@ -35,6 +35,7 @@ export class MyGalleryComponent implements OnInit {
      this.galleryApiService.getAllLikes().subscribe(
        result => {
          this.myGalleryList = result;
+         result.reverse();
          console.log(this.myGalleryList)
        },
        error => console.log(error)
