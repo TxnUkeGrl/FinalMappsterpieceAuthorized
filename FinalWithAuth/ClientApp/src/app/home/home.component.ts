@@ -8,6 +8,9 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  styleUrls: [
+
+  ]
 })
 export class HomeComponent {
 
