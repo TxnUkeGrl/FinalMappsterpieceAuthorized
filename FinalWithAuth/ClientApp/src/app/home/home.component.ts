@@ -8,11 +8,13 @@ import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  styleUrls: [
+
+  ]
 })
 export class HomeComponent {
 
-  constructor(private metAPIservice: MetAPIService) {}
+  constructor(private metAPIservice: MetAPIService) { }
 
   ngOnInit() { }
-
 }

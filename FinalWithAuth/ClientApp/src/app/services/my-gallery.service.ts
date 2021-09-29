@@ -11,7 +11,8 @@ import { Observable } from 'rxjs';
 export class MyGalleryService {
 
   //apiUri: string = "https://localhost:44375/api/likes"; //base URL needed
-  apiUri: string ="https://finalwithauth20210927210616.azurewebsites.net/"; //base URL needed
+  //apiUri: string ="https://finalwithauth20210927210616.azurewebsites.net/"; //base URL needed
+  apiUri = "/api/likes";
 
   constructor(private http: HttpClient) { }
 

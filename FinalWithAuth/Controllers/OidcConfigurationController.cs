@@ -16,10 +16,10 @@ namespace FinalWithAuth.Controllers
 
         public IClientRequestParametersProvider ClientRequestParametersProvider { get; }
 
-        [HttpGet("_configuration/{clientId}")]
-        public IActionResult GetClientRequestParameters([FromRoute] string clientId)
+        [HttpGet("_configuration/{ClientId}")]
+        public IActionResult GetClientRequestParameters([FromRoute] string ClientId)
         {
-            var parameters = ClientRequestParametersProvider.GetClientParameters(HttpContext, clientId);
+            var parameters = ClientRequestParametersProvider.GetClientParameters(HttpContext, ClientId);
             return Ok(parameters);
         }
     }

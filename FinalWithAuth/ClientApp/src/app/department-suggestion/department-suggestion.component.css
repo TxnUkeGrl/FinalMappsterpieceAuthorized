@@ -4,10 +4,17 @@
   color: black;
   padding: 14px 28px;
   font-size: 20px;
-
 }
 
-.btn-select:hover {
-  background-color: rgb(236, 46, 55);
-  color: white;
+  .btn-select:hover {
+    background-color: rgb(236, 46, 55);
+    color: white;
   }
+
+.page {
+  border-collapse: collapse;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  padding: 50px;
+  margin: 20px;
+}
